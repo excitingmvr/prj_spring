@@ -8,15 +8,24 @@
     그리고 dao 에서 namespace와 일치하여야 된다. -->
     
 <mapper namespace="com.mycompany.app.codegroup.CodeGroupMapper">  
-
-
- 										<!-- select 결과를 받을 객체 -->
+ 										
+ 	<!-- select 결과를 받을 객체 -->
     <resultMap id="resultMapObj" type="com.mycompany.app.codegroup.CodeGroup"></resultMap>
     
    	<select id="selectList" resultMap="resultMapObj">
    		SELECT *
    		FROM
    			infrCodeGroup
+		WHERE
+			ifcgName LIKE CONCAT('%',#{shKeyword},'%') 			
    	</select>
+   	
+   	<select id="selectOne" resultMap="resultMapObj">
+   		SELECT *
+   		FROM
+   			infrCodeGroup
+		WHERE
+			ifcgSeq = #{ifcgSeq}	
+   	</select>   	
 
 </mapper>    
