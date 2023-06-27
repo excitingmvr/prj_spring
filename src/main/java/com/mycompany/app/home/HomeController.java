@@ -10,7 +10,6 @@ public class HomeController {
 	@RequestMapping(value = "/" )
 	public String home() {
 		// 여기에서 서버단에서 필요한 작업을 수행한다.
-		System.out.println("asdfasf");
 		// href="/resources/xdm/v1/css/commonXdm.css"
 		
 		// 아래의 jsp 파일 호출

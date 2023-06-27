@@ -27,5 +27,29 @@
 		WHERE
 			ifcgSeq = #{ifcgSeq}	
    	</select>   	
+   	
+   	
+   	<update id="update">
+   		UPDATE infrCodeGroup
+   		SET
+   			ifcgName = #{ifcgName}
+		WHERE
+			ifcgSeq = #{ifcgSeq}	
+   	</update>   	
+   	
+   	
+   	<delete id="delete">
+   		delete from infrCodeGroup WHERE ifcgSeq = #{ifcgSeq}	
+   	</delete>   	
+   	
+   	
+   	<update id="uelete">
+   		UPDATE infrCodeGroup
+   		SET
+   			ifcgDelNy = 1
+		WHERE
+			ifcgSeq = #{ifcgSeq}	
+   	</update>   	
+	
 
 </mapper>    

@@ -16,19 +16,14 @@ public class CodeGroupController {
 	@RequestMapping("/codeGroupList")
 	public String codeGroupList(CodeGroupVo vo, Model model) {
 		
-		
-		System.out.println("controller: vo.getShOption(): " + vo.getShOption());
-		System.out.println("controller: vo.getShKeyword(): " + vo.getShKeyword());
-		
 		List<CodeGroup> list = service.selectList(vo);
 		
 //		왼쪽의 list 는 jsp 에서 사용할 변수명
 		model.addAttribute("list", list);
 		
-		System.out.println("asdasdf");
-		
 		return "codeGroupList";
 	}
+	
 	
 	@RequestMapping("/codeGroupForm")
 	public String codeGroupForm(CodeGroupVo vo, Model model) {
@@ -39,5 +34,35 @@ public class CodeGroupController {
 		
 		return "codeGroupForm";
 	}
+	
+	
+	@RequestMapping("/codeGroupUpdt")
+	public String codeGroupUpdt(CodeGroup dto) {
+		
+		service.update(dto);
+		
+		return "redirect:/codeGroupList";
+	}
+	
+	
+	@RequestMapping("/codeGroupDele")
+	public String codeGroupDele(CodeGroup dto) {
+		
+		service.delete(dto);
+		
+		return "redirect:/codeGroupList";
+	}
+	
+	
+	@RequestMapping("/codeGroupUele")
+	public String codeGroupUele(CodeGroup dto) {
+		
+		service.uelete(dto);
+		
+		return "redirect:/codeGroupList";
+	}
+	
+	
+
 
 }
