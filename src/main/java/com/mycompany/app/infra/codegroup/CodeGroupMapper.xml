@@ -7,25 +7,33 @@
     해서 관계적으로 해당 파일의 패스와 파일이름(확장자제외)
     그리고 dao 에서 namespace와 일치하여야 된다. -->
     
-<mapper namespace="com.mycompany.app.codegroup.CodeGroupMapper">  
+<mapper namespace="com.mycompany.app.infra.codegroup.CodeGroupMapper">  
  										
  	<!-- select 결과를 받을 객체 -->
-    <resultMap id="resultMapObj" type="com.mycompany.app.codegroup.CodeGroup"></resultMap>
+    <resultMap id="resultMapObj" type="com.mycompany.app.infra.codegroup.CodeGroup"></resultMap>
+    
+    <sql id="abc">
+    	ifcgSeq
+    	,ifcgName
+    	,ifcgDelNy
+    </sql>
     
    	<select id="selectList" resultMap="resultMapObj">
-   		SELECT *
+   		SELECT
+			<include refid="abc" />
    		FROM
    			infrCodeGroup
-		WHERE
-			ifcgName LIKE CONCAT('%',#{shKeyword},'%') 			
+		WHERE 1=1
+			<if test="shKeyword != null and !shKeyword.equals('')">AND ifcgName LIKE CONCAT('%',#{shKeyword},'%')</if>		
    	</select>
    	
    	<select id="selectOne" resultMap="resultMapObj">
-   		SELECT *
+   		SELECT
+			<include refid="abc" />
    		FROM
    			infrCodeGroup
-		WHERE
-			ifcgSeq = #{ifcgSeq}	
+		WHERE 1=1
+			AND ifcgSeq = #{ifcgSeq}	
    	</select>   	
    	
    	
