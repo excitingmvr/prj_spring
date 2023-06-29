@@ -22,7 +22,9 @@ public class CodeGroupServiceImpl implements CodeGroupService{
 	}
 
 	@Override
-	public int update(CodeGroup dto) {	 return dao.update(dto); }
+	public int update(CodeGroup dto) {
+		return dao.update(dto); 
+	}
 
 	@Override
 	public int delete(CodeGroup dto) {
@@ -34,6 +36,9 @@ public class CodeGroupServiceImpl implements CodeGroupService{
 		return dao.uelete(dto);
 	}
 
-
+	@Override
+	public int insert(CodeGroup dto) {
+		return dao.insert(dto);
+	}
 	
 }

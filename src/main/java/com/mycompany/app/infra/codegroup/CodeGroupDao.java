@@ -17,29 +17,11 @@ public class CodeGroupDao {
 	
 	private static String namespace = "com.mycompany.app.infra.codegroup.CodeGroupMapper";
 	
-	public List<CodeGroup> selectList(CodeGroupVo vo){ 
-	
-		List<CodeGroup> rt = sqlSession.selectList(namespace + ".selectList", vo);
-		
-		return rt; 
-	
-	}
-	
-	
-	public CodeGroup selectOne(CodeGroupVo vo){ 
-		CodeGroup codeGroup = sqlSession.selectOne(namespace + ".selectOne", vo);
-		return codeGroup; 
-	}
-	
-	
+	public List<CodeGroup> selectList(CodeGroupVo vo) {return sqlSession.selectList(namespace + ".selectList", vo); }	
+	public CodeGroup selectOne(CodeGroupVo vo){ return sqlSession.selectOne(namespace + ".selectOne", vo); }
 	public int update(CodeGroup dto){ return sqlSession.update(namespace + ".update", dto); }
 	public int delete(CodeGroup dto){ return sqlSession.delete(namespace + ".delete", dto); }
 	public int uelete(CodeGroup dto){ return sqlSession.update(namespace + ".uelete", dto); }
-	
-
-	
-//	public List<CodeGroup> selectList(){ 
-//		return sqlSession.selectList(namespace + ".selectList", ""); 
-//	}
+	public int insert(CodeGroup dto){ return sqlSession.insert(namespace + ".insert", dto); }
 	
 }

@@ -3,13 +3,8 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
-<!--     전체 매퍼중에서 유일한 값을 사용하여야 한다.
-    해서 관계적으로 해당 파일의 패스와 파일이름(확장자제외)
-    그리고 dao 에서 namespace와 일치하여야 된다. -->
-    
 <mapper namespace="com.mycompany.app.infra.codegroup.CodeGroupMapper">  
- 										
- 	<!-- select 결과를 받을 객체 -->
+
     <resultMap id="resultMapObj" type="com.mycompany.app.infra.codegroup.CodeGroup"></resultMap>
     
     <sql id="abc">
@@ -36,7 +31,6 @@
 			AND ifcgSeq = #{ifcgSeq}	
    	</select>   	
    	
-   	
    	<update id="update">
    		UPDATE infrCodeGroup
    		SET
@@ -45,11 +39,9 @@
 			ifcgSeq = #{ifcgSeq}	
    	</update>   	
    	
-   	
    	<delete id="delete">
    		delete from infrCodeGroup WHERE ifcgSeq = #{ifcgSeq}	
    	</delete>   	
-   	
    	
    	<update id="uelete">
    		UPDATE infrCodeGroup
@@ -58,6 +50,15 @@
 		WHERE
 			ifcgSeq = #{ifcgSeq}	
    	</update>   	
-	
+   	
+   	<insert id="insert">
+   		INSERT INTO infrCodeGroup (
+   			ifcgName
+   			,ifcgDelNy
+   		) values (
+   		   	#{ifcgName}
+   			,0
+   		)
+   	</insert>   	
 
 </mapper>    

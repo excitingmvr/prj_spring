@@ -7,12 +7,24 @@
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
+11: <c:out value="${param.ifcgSeq }"/>
+
 <form name="form" method="post">
-	<input type="text" name="ifcgSeq" id="ifcgSeq" realonly value="<c:out value="${item.ifcgSeq }"/>">
+
+<%@include file="includeElementId.jsp"%>
+	
 	<input type="text" name="ifcgName" id="ifcgName" value="<c:out value="${item.ifcgName }"/>">
-	<button type="button" class="btn btn-danger" id="btnDelete">Delete</button>
-	<button type="button" class="btn btn-danger" id="btnUelete">Uelete</button>
-	<button type="button" class="btn btn-primary" id="btn">save</button>
+	
+<c:choose>
+	<c:when test="${empty item.ifcgSeq }">
+		<button type="button" class="btn btn-primary" id="btnInst">save</button>
+	</c:when>
+	<c:otherwise>
+		<button type="button" class="btn btn-danger" id="btnDelete">Delete</button>
+		<button type="button" class="btn btn-danger" id="btnUelete">Uelete</button>
+		<button type="button" class="btn btn-primary" id="btnUpdt">save</button>
+	</c:otherwise>	
+</c:choose>
 </form>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
@@ -20,22 +32,23 @@
 
 <script type="text/javascript">
 
-	$("#btn").on("click", function(){
-	// 	$("form[name=formList]").attr("method","get");
+	$("#btnUpdt").on("click", function(){
 	 	$("form[name=form]").attr("action", "/codeGroupUpdt").submit();
-		
 	});
 	
 	
 	$("#btnDelete").on("click", function(){
-	// 	$("form[name=formList]").attr("method","get");
 	 	$("form[name=form]").attr("action", "/codeGroupDele").submit();
 	});
 	
 	
 	$("#btnUelete").on("click", function(){
-	// 	$("form[name=formList]").attr("method","get");
 	 	$("form[name=form]").attr("action", "/codeGroupUele").submit();
+	});
+	
+	
+	$("#btnInst").on("click", function(){
+	 	$("form[name=form]").attr("action", "/codeGroupInst").submit();
 	});
 
 </script>	
