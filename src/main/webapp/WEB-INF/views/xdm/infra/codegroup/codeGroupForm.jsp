@@ -30,10 +30,30 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
+<script src="/resources/js/validation.js"></script>
+
 <script type="text/javascript">
 
+	
+	validationInst = function() {
+		if(validationUpdt() == false) return false;
+	}
+	
+	
+	validationUpdt = function() {
+		if(check($.trim($("#ifcgName").val())) == false) return false;
+	}
+	
+	
+	$("#btnInst").on("click", function(){
+		if (validationInst() == false) return false;		/* **** */
+		$("form[name=form]").attr("action", "/codeGroupInst").submit();
+	});
+	
+	
 	$("#btnUpdt").on("click", function(){
-	 	$("form[name=form]").attr("action", "/codeGroupUpdt").submit();
+		if (validationUpdt() == false) return false;		/* **** */
+		$("form[name=form]").attr("action", "/codeGroupUpdt").submit();
 	});
 	
 	
@@ -44,11 +64,6 @@
 	
 	$("#btnUelete").on("click", function(){
 	 	$("form[name=form]").attr("action", "/codeGroupUele").submit();
-	});
-	
-	
-	$("#btnInst").on("click", function(){
-	 	$("form[name=form]").attr("action", "/codeGroupInst").submit();
 	});
 
 </script>	
