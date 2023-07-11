@@ -34,6 +34,7 @@
 
 <script type="text/javascript">
 
+	var objName = $("#ifcgName");
 	
 	validationInst = function() {
 		if(validationUpdt() == false) return false;
@@ -41,7 +42,7 @@
 	
 	
 	validationUpdt = function() {
-		if(check($.trim($("#ifcgName").val())) == false) return false;
+		if(check(objName) == false) return false;
 	}
 	
 	
