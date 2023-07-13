@@ -12,7 +12,7 @@ public class IndexController {
 	}
 	
 	
-	@RequestMapping("/indexUsrView")
+	@RequestMapping( value= {"/", "/indexUsrView"})
 	public String indexUsrView() {
 		return "usr/infra/index/indexUsrView";
 	}

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.mycompany.app.infra.member.MemberMapper">  
+
+    <resultMap id="resultMapObj" type="com.mycompany.app.infra.member.Member"></resultMap>
+	
+	<select id="selectOne" resultMap="resultMapObj">
+		SELECT
+			ifmmSeq
+			, ifmmName
+			, ifmmId
+		FROM
+			infrMember
+		WHERE 1=1
+			AND ifmmId = #{ifmmId}
+			AND ifmmPassword = #{ifmmPassword}   
+	</select>   
+	
+	
+	<select id="selectOneCheckId" resultType="Integer">
+		SELECT
+			COUNT(ifmmSeq)
+		FROM
+			infrMember
+		WHERE 1=1
+			AND ifmmName = #{ifmmName}
+	</select>   
+
+</mapper>    

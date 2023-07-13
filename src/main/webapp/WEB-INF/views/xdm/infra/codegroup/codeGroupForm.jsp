@@ -46,6 +46,31 @@
 	}
 	
 	
+
+	$("#ifcgName").on("blur", function(){
+		
+		$.ajax({
+			async: true 
+			,cache: false
+			,type: "post"
+			/* ,dataType:"json" */
+			,url: "/checkIdProc"
+			/* ,data : $("#formLogin").serialize() */
+			,data : { "ifmmName" : $("#ifcgName").val()	}
+			,success: function(response) {
+				if(response.rt == "available") {
+					alert("사용가능합니다.")
+				} else {
+					alert("다른걸로 골라 주세요")
+				}
+			}
+			,error : function(jqXHR, textStatus, errorThrown){
+				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+			}
+		});
+		
+	});
+	
 	$("#btnInst").on("click", function(){
 		if (validationInst() == false) return false;		/* **** */
 		$("form[name=form]").attr("action", "/codeGroupInst").submit();
