@@ -10,6 +10,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+/**
+ * @author i7C-31
+ *
+ */
 @Controller
 public class MemberController {
 
@@ -22,6 +26,11 @@ public class MemberController {
 		return "usr/infra/member/loginUsrForm";
 	}
 	
+	/**
+	 * @param vo
+	 * @param httpSession
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping("/loginProc")
 	public Map<String, Object> loginProc(MemberVo vo, HttpSession httpSession) {
@@ -44,6 +53,10 @@ public class MemberController {
 	}
 	
 	
+	/**
+	 * @param httpSession
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping("/logoutUsrProc")
 	public Map<String, Object> logoutUsrForm(HttpSession httpSession) {
@@ -55,6 +68,10 @@ public class MemberController {
 	}
 	
 	
+	/**
+	 * @param vo
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping("/checkIdProc")
 	public Map<String, Object> checkIdProc(MemberVo vo) {
